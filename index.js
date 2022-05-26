@@ -159,6 +159,8 @@ async function run(){
             const token = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' })
             res.send( {result,token} );
           })
+
+          
           //admin check
           app.get('/admin/:email', async (req, res) => {
             const email = req.params.email;
@@ -167,7 +169,7 @@ async function run(){
             res.send({ admin: isAdmin })
           })
 
-          
+
           //admin user
           app.put('/users/admin/:email', async (req, res) => {
             const email = req.params.email;
