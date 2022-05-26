@@ -189,6 +189,7 @@ async function run(){
             const cursor = userCollection.find(query);
             const reviews = await cursor.toArray();
             res.send(reviews);
+            
         });
           //getOrders
           app.get('/orders', async (req, res) => {
@@ -196,8 +197,7 @@ async function run(){
            
             const cursor = orderCollection.find(query);
             const order = await cursor.toArray();
-            res.send(order);
-            
+            res.send(order);          
         });
 
 
