@@ -166,6 +166,8 @@ async function run(){
             const isAdmin = user.role === 'admin';
             res.send({ admin: isAdmin })
           })
+
+          
           //admin user
           app.put('/users/admin/:email', async (req, res) => {
             const email = req.params.email;
@@ -181,6 +183,7 @@ async function run(){
             }else{
               res.status(403).send({message:'forbidden'})
             }
+
             
           })
           app.get('/users/:email', async (req, res) => {
