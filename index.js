@@ -64,6 +64,8 @@ async function run(){
           });
           res.send({clientSecret: paymentIntent.client_secret})
         });
+        //get trans by id
+        
     
         // product
         app.get('/products', async (req, res) => {
@@ -72,6 +74,12 @@ async function run(){
             const items = await cursor.toArray();
             res.send(items);
         });
+        //add product
+        app.post('/products', async (req, res) => {
+          const newProduct = req.body;
+          const result = await productCollection.insertOne(newProduct);
+          res.send(result);
+      });
          // update product
     app.put('/products/:id', async (req, res) => {
       const id = req.params;
@@ -96,6 +104,13 @@ async function run(){
             const id = req.params.id;
             const query = { _id: ObjectId(id) };
             const result = await productCollection.findOne(query);
+            res.send(result);
+          });
+          //delete product by id
+          app.delete('/products/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await productCollection.deleteOne(query);
             res.send(result);
           });
           //get products by name
