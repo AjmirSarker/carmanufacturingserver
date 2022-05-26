@@ -65,7 +65,7 @@ async function run(){
           res.send({clientSecret: paymentIntent.client_secret})
         });
         //get trans by id
-        
+
     
         // product
         app.get('/products', async (req, res) => {
@@ -197,6 +197,7 @@ async function run(){
             const cursor = orderCollection.find(query);
             const order = await cursor.toArray();
             res.send(order);
+            
         });
 
 
