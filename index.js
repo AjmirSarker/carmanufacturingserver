@@ -121,6 +121,7 @@ async function run(){
                console.log(tasks);
             res.send(tasks);
         })
+        
            //get order by email
            app.get('/individual',async(req,res)=>{
             const email = req.query.email;
@@ -129,6 +130,7 @@ async function run(){
             const tasks = await orderCollection.find(query).toArray();
             res.send(tasks);
         })
+
           //allreviews
           app.get('/reviews', async (req, res) => {
             const query = {};
@@ -160,7 +162,7 @@ async function run(){
             res.send( {result,token} );
           })
 
-          
+
           //admin check
           app.get('/admin/:email', async (req, res) => {
             const email = req.params.email;
